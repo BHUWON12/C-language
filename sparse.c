@@ -11,7 +11,7 @@ int main()
             scanf("%d",&a[i][j]);
 
         }
-    }
+    } 
     s[0][0] = r;
     s[0][1] =c;
     for(i=0;i<r;i++){
