@@ -41,7 +41,7 @@ void printArray(int array[], int size) {
 void insertionSort(int array[], int size) {
   for (int i = 1; i < size; i++) {
     int key = array[i];
-    int j = t i - 1;
+    int j = i - 1;
 
     // Compare key with each element on the left of it until an element smaller than
     // it is found.

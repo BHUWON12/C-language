@@ -1,8 +1,9 @@
 #include<stdio.h>
  #include<stdlib.h>
+ #define max 5
  struct cqueue
  {
-    int Q[10];
+    int Q[max];
     int rear,front;
  }q;
  int cqueue_empty()
@@ -18,7 +19,7 @@
  }
     int cqueue_full()
     {
-        if(q.front==((q.rear+1)%10))
+        if(q.front==((q.rear+1)%max))
         {
             return 1;
         }
@@ -35,7 +36,7 @@
         {
             printf("Enter a value");
             scanf("%d",&x);
-            q.rear=(q.rear+1)%10;
+            q.rear=(q.rear+1)%max;
             q.Q[q.rear]=x;
             if(q.rear==0)
             {
@@ -55,8 +56,8 @@
         {
             x=q.Q[q.front];
             printf("Deleted value is %d",x);
-            q.front=(q.front+1)%10;
-            if(q.front==((q.rear+1)%10))
+            q.front=(q.front+1)%max;
+            if(q.front==((q.rear+1)%max))
             {
                 q.front=-1;
                 q.rear=-1;
@@ -70,11 +71,11 @@
     void display()
     {
         int i;
-        for(i=q.front;i!=q.rear;(i+1)%10)
+        printf("the stored Q is bellow\n");
+        for(i=q.front;i!=q.rear+1;i++)
         {
             printf("%d\n",q.Q[i]);
         }
-        printf("%d\n",q.Q[i]);
     }
     int main()
     {
