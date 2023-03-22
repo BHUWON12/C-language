@@ -2,6 +2,7 @@
 and display the output in
 descending order.*/
 #include<stdio.h>
+#include<stdlib.h>
 
 void selection_sort(int list[],int n)
 {
@@ -29,12 +30,26 @@ void selection_sort(int list[],int n)
      printf("%d\t",list[i]);   
     }
 }
-/*insertion_sort(int list[],int n)
+void insertion_sort(int list[],int n)
 {
-   
+   for(int i=1;i<n;i++)
+   { 
+    int temp=list[i];
+    int j=i-1;
+    while(j>=0&&temp<list[j])
+    {
+        list[j+1]=list[j];
+        j--;
+    }
+    list[j+1]=temp;
+   }
+     printf("the shorted list \n");
+    for(int i=0;i<n;i++)
+    {
+     printf("%d\t",list[i]);   
+    }
     
-    
-}*/
+}
 
 int main()
 {
@@ -48,6 +63,19 @@ int main()
         printf("enter a element\n");
         scanf("%d",&a[i]);
     }
-    selection_sort(a,n);
+    while(1)
+    {
+    printf("\nenter choice\n1.selection short\n2.insertionshort\n\n3.exit\n");
+    int ch;
+    scanf("%d",&ch);
+    switch(ch)
+    {
+        case 1:
+    selection_sort(a,n); break;
+    case 2:
+    insertion_sort(a,n);break;
+    case 3:
+    exit(0);
+    }}
 return 0;
 }
