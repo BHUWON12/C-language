@@ -6,56 +6,67 @@ list. Display your list after each insertion and deletion.*/
 struct queue
 {
     int list[max];
-    int front,rear;
 }q;
+ int front,rear;
 void insertion()
 {
-    if(q.rear==max)
+    if(rear==-1 && front==-1)
     {
-        printf("the Q is full you cant enter any data on list\n");
+        front=0;
+        rear=0;
+         printf("enter data:");
+        scanf("%d",&q.list[rear]);
+
+    }
+   else if((rear+1)%max==front)
+    {
+        printf("the CQ is full\n");
     }
     else
     {
-        int temp;
-        printf("enter the data: ");
-        scanf("%d",&temp);
-        q.list[q.rear]=temp;
-        q.rear++;
-         
-
+        rear=(rear+1)%max;
+        printf("enter data:");
+        scanf("%d",&q.list[rear]);
+        
     }
+
 }
 void deletion()
 {
-    if(q.front==max)
+    if(rear==-1 && front==-1)
     {
-        printf("the Q is empty deletion is not possible\n");
+        printf("the CQ is empty\n");
     }
     else
     {
         int temp;
-        temp=q.list[q.front];
-        q.front++;
-        printf("the deleted data: %d",temp);
+        temp=q.list[front];
+        printf("the deleted data: [%d]",temp);
+        front=(front+1)%max;
     }
+
 }
 void printing()
-{   if(q.front==max)
+
+{
+    int i=front;
+     if(front==-1 && rear==-1)
 {
     printf("there is no data to print in Q\n");
 }
 else
 {
     printf("the list of Q :\n|>>>\t");
-    for(int i=q.front;i<q.rear;i++)
-    {
+   while(i<rear)
+   {
         printf("[%d]\t",q.list[i]);
+        i=(i+1)%max;
     }
     printf("<<<|");
 }}
 int main()
 {
-   q.front=q.rear=0;
+   front=rear=-1;
      int ch;
     while(1)
     {
